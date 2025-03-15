@@ -1,77 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Form</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 50px;
-            background-color: #f4f4f4;
-        }
-        form {
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            max-width: 400px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        label {
-            font-weight: bold;
-        }
-        input, textarea, select {
-            width: 100%;
-            padding: 8px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        input[type="radio"] {
-            width: auto;
-            margin-right: 5px;
-        }
-        input[type="submit"] {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #218838;
-        }
-    </style>
+    <title>Registration Form</title>
 </head>
+
 <body>
 
-    <h2>Contact Us</h2>
+    <h2>Registration Form</h2>
+    <form>
+        <table border = "1" cellpadding = "8" cellspacing = "0">
+            <tr>
+                <td><label>First Name:</label></td>
+                <td><input type="text"><br><br></td>
+            </tr>
 
-    <form action="submit_form.php" method="post">
-        <label for="fname">First Name:</label>
-        <input type="text" id="fname" name="fname" required>
 
-        <label for="lname">Last Name:</label>
-        <input type="text" id="lname" name="lname" required>
+            <tr>
+                <td><label>Last Name:</label></td>
+                <td><input type="text"><br><br></td>
+            </tr>
 
-        <label for="dob">Date of Birth:</label>
-        <input type="date" id="dob" name="dob" required>
+            <tr>
+                <td><label>ID:</label></td>
+                <td><input type="number"><br><br></td>
+            </tr>
 
-        <label>Gender:</label><br>
-        <input type="radio" id="male" name="gender" value="male" required>
-        <label for="male">Male</label>
-        
-        <input type="radio" id="female" name="gender" value="female" required>
-        <label for="female">Female</label><br><br>
+            <tr>
+                <td><label>Password:</label></td>
+                <td><input type="password"><br><br></td>
+            </tr>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+            <tr>
+                <td><label>Department:</label></td>
+                <td><select id="department"></td>
+                <td><option value="">Select</option></td>
+                <td><option value="cse">Computer Science and Engineering</option></td>
+                <td><option value="llb">Law</option></td>
+                <td><option value="cs">Network Security</option></td>
+                <td></select><br><br></td>
+            </tr>
 
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
+            <tr>
+                <td><label>Skills:</label><br></td>
+                <td><input type="checkbox" value="Programming"></td>
+                <td><label>Programming</label></td>
+                <td><input type="checkbox" value="Data Analysis"></td>
+                <td><label>Web Developer</label></td>
+                <td><input type="checkbox" value="AI"></td>
+                <td><label>Artificial Intelligence</label></td>
+                <td><input type="checkbox" value="Research"></td>
+                <td><label>Researcher</label><br><br></td>
+            </tr>
 
-        <input type="submit" value="Submit">
+            <tr>
+                <td><label>Gender:</label></td>
+                <td><input type="radio" value="male"></td>
+                <td><label>Male</label></td>
+                <td><input type="radio" value="female"></td>
+                <td><label>Female</label></td>
+                <td><input type="radio" value="other"></td>
+                <td><label>Other</label><br><br></td>
+            </tr>
+
+            <tr>
+                <td><label>Address:</label></td>
+                <td><input type="text"><br><br></td>
+            </tr>
+
+            <tr>
+                <td><label>Email:</label></td>
+                <td><input type="email"><br><br></td>
+            </tr>
+
+            <tr>
+                <td><label>Upload File:</label></td>
+                <td><input type="file"><br><br></td>
+            </tr>
+
+            <tr>
+                <td><input type="reset" value="Reset"></td>
+                <td><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
     </form>
 
 </body>
+
 </html>
