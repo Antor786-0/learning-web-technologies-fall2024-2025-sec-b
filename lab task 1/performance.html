@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management</title>
+</head>
+<body>
+
+    <!-- Add Product Box -->
+    <table border="1">
+        <tr>
+            <th >ADD PRODUCT</th>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" id="name"></td>
+        </tr>
+        <tr>
+            <td>Buying Price:</td>
+            <td><input type="number" id="buyingPrice"></td>
+        </tr>
+        <tr>
+            <td>Selling Price:</td>
+            <td><input type="number" id="sellingPrice"></td>
+        </tr>
+        <tr>
+            <td>Display:</td>
+            <td><input type="checkbox" id="display"></td>
+        </tr>
+        <tr>
+            <td ><button type="submit">SAVE</button></td>
+        </tr>
+    </table>
+
+    <!-- Display Products Box -->
+    <table border="1">
+        <tr>
+            <th colspan="3" style="text-align: center;">DISPLAY</th>
+        </tr>
+        <tr>
+            <th>NAME</th>
+            <th>PROFIT</th>
+            <th>Actions</th>
+        </tr>
+        <tbody id="productTable">
+            <!-- Products will be displayed here -->
+        </tbody>
+    </table>
+
+    <!-- Edit Product Box -->
+    <table border="1">
+        <tr>
+            <th >EDIT PRODUCT</th>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" id="editName"></td>
+        </tr>
+        <tr>
+            <td>Buying Price:</td>
+            <td><input type="number" id="editBuyingPrice"></td>
+        </tr>
+        <tr>
+            <td>Selling Price:</td>
+            <td><input type="number" id="editSellingPrice"></td>
+        </tr>
+        <tr>
+            <td>Display:</td>
+            <td><input type="checkbox" id="editDisplay"></td>
+        </tr>
+        <tr>
+            <td ><button type="submit">SAVE</button></td>
+        </tr>
+    </table>
+
+    <!-- Delete Product Box -->
+    <table border="1">
+        <tr>
+            <th >DELETE PRODUCT</th>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" id="deleteName"></td>
+        </tr>
+        <tr>
+            <td ><button type="submit">Delete</button></td>
+        </tr>
+    </table>
+
+    <!-- Search Products Box -->
+    <table border="1">
+        <tr>
+            <th >SEARCH</th>
+        </tr>
+        <tr>
+            <td>Search by Name:</td>
+            <td><input type="text" id="search" placeholder="Search for products.."></td>
+        </tr>
+        <tr>
+            <td >
+                <div id="searchResults">
+                    <!-- Search results will be displayed here -->
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td ><button type="submit">search</button></td>
+        </tr>
+    </table>
+
+</body>
+</html>
