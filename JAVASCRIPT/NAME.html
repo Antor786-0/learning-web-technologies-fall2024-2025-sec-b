@@ -4,15 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Name</title>
+    <script>
+        // JavaScript validation function
+        function nameValidation() {
+            var name = document.getElementById('name').value;
+            
+            // Check if the name is empty
+            if (name.trim() === "") {
+                alert("Name is required.");
+                return false;
+            }
+
+            // Optional: Check if the name contains only alphabetic characters (A-Z, a-z)
+            var regex = /^[A-Za-z\s]+$/;
+            if (!regex.test(name)) {
+                alert("Name can only contain letters and spaces.");
+                return false;
+            }
+
+            // If validation is successful, form will be submitted
+            return true;
+        }
+    </script>
 </head>
 <body>
     <fieldset>
         <legend>Name</legend>
-        <form action="email.html"id = "nameForm" onsubmit="return nameValidation()">
+        <form action="email.html" id="nameForm" onsubmit="return nameValidation()">
             <table>
                 <tr>
                     <td>Name</td>
-                    <td><input type="text" name="" id="name"></td>
+                    <td><input type="text" name="name" id="name"></td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Submit"></td>
@@ -20,7 +42,5 @@
             </table>
         </form>
     </fieldset>
-
-    <script src="index.js"></script>
 </body>
 </html>

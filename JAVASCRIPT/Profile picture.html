@@ -4,6 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Picture</title>
+    <script>
+        // JavaScript validation function for User ID and Profile Picture
+        function profilePicNdUserIdValidation() {
+            var userId = document.getElementById('userId').value;
+            var picture = document.getElementById('picture').files[0];
+
+            // Validate if User ID is empty
+            if (userId.trim() === "") {
+                alert("User ID is required.");
+                return false;
+            }
+
+            // Validate if Picture is selected
+            if (!picture) {
+                alert("Please upload a profile picture.");
+                return false;
+            }
+
+            // Validate if the uploaded file is an image (basic check for file extension)
+            var validImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'];
+            if (!validImageTypes.includes(picture.type)) {
+                alert("Please upload a valid image file (jpg, jpeg, png, gif).");
+                return false;
+            }
+
+            // If validation passes, allow form submission
+            return true;
+        }
+    </script>
 </head>
 <body>
     <fieldset>
@@ -12,11 +41,11 @@
             <table>
                 <tr>
                     <td>User Id</td>
-                    <td><input type="text" name="" id="userId" value=""></td>
+                    <td><input type="text" name="userId" id="userId" value=""></td>
                 </tr>
                 <tr>
                     <td>Picture</td>
-                    <td><input type="file" name="" id="picture" accept="image/*"></td>
+                    <td><input type="file" name="picture" id="picture" accept="image/*"></td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Submit"></td>
@@ -24,7 +53,5 @@
             </table>
         </form>
     </fieldset>
-
-    <script src="index.js"></script>
 </body>
 </html>

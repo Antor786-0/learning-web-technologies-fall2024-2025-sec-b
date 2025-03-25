@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Degree</title>
+    <script>
+        // JavaScript validation function for degree selection
+        function degreeValidation() {
+            var ssc = document.getElementById('ssc').checked;
+            var hsc = document.getElementById('hsc').checked;
+            var bsc = document.getElementById('bsc').checked;
+
+            // Check if at least one checkbox is selected
+            if (!ssc && !hsc && !bsc) {
+                alert("Please select at least one degree.");
+                return false; // Prevent form submission
+            }
+
+            return true; // Allow form submission
+        }
+    </script>
 </head>
 <body>
     <fieldset>
@@ -12,11 +28,10 @@
             <table>
                 <tr>
                     <td>
-                        <input type="checkbox" name="" id="ssc"> SSC
-                        <input type="checkbox" name="" id="hsc"> HSC
-                        <input type="checkbox" name="" id="bsc"> BSC
+                        <input type="checkbox" id="ssc"> SSC
+                        <input type="checkbox" id="hsc"> HSC
+                        <input type="checkbox" id="bsc"> BSC
                     </td>
-
                 </tr>
                 <tr>
                     <td><input type="submit" value="Submit"></td>
@@ -24,6 +39,5 @@
             </table>
         </form>
     </fieldset>
-    <script src="index.js"></script>
 </body>
 </html>

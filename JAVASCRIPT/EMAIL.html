@@ -15,6 +15,9 @@
             font-size: 12px;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
             border-radius: 4px;
+            top: 30px;
+            left: 10px;
+            z-index: 10;
         }
         .tooltip-container {
             position: relative;
@@ -30,10 +33,10 @@
                 <tr>
                     <td>Email</td>
                     <td>
-                        <input type="text" id="email">
+                        <input type="text" id="email" required>
                         <div class="tooltip-container">
-                            <input type="button" value="i" id="suggestion">
-                            <span class="tooltip" id="tooltip-text">hint: sample@example.com</span>
+                            <input type="button" value="i" id="suggestion" onclick="toggleTooltip()">
+                            <span class="tooltip" id="tooltip-text">Hint: sample@example.com</span>
                         </div>
                     </td>
                 </tr>
@@ -44,6 +47,30 @@
         </form>
     </fieldset>
 
-    <script src="index.js"></script>
+    <script>
+        // Toggle the tooltip visibility
+        function toggleTooltip() {
+            var tooltip = document.getElementById('tooltip-text');
+            if (tooltip.style.display === 'none' || tooltip.style.display === '') {
+                tooltip.style.display = 'block';
+            } else {
+                tooltip.style.display = 'none';
+            }
+        }
+
+        // Email validation function
+        function emailValidation() {
+            var email = document.getElementById('email').value;
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            // Check if the email matches the pattern
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return false; // Prevent form submission
+            }
+
+            return true; // Allow form submission
+        }
+    </script>
 </body>
 </html>

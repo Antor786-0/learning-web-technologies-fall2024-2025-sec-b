@@ -4,6 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gender</title>
+    <script>
+        // JavaScript validation function for gender
+        function genderValidation() {
+            // Check if any radio button is selected
+            var male = document.getElementById('male');
+            var female = document.getElementById('female');
+            var other = document.getElementById('other');
+
+            // If no radio button is selected, show an alert and prevent form submission
+            if (!male.checked && !female.checked && !other.checked) {
+                alert("Please select a gender.");
+                return false;
+            }
+
+            // If gender is selected, form will be submitted
+            return true;
+        }
+    </script>
 </head>
 <body>
     <fieldset>
@@ -11,9 +29,9 @@
         <form action="dob.html" onsubmit="return genderValidation()">
             <table>
                 <tr>
-                    <input type="radio" name="gender" id="male"> Male
-                    <input type="radio" name="gender" id="female"> Female
-                    <input type="radio" name="gender" id="other"> Other
+                    <td><input type="radio" name="gender" id="male"> Male</td>
+                    <td><input type="radio" name="gender" id="female"> Female</td>
+                    <td><input type="radio" name="gender" id="other"> Other</td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Submit"></td>
@@ -21,7 +39,5 @@
             </table>
         </form>
     </fieldset>
-
-    <script src="index.js"></script>
 </body>
 </html>
