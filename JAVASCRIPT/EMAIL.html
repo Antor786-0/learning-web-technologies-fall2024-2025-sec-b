@@ -1,76 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email</title>
+    <title> Email Validation</title>
     <style>
-        .tooltip {
-            display: none;
-            position: absolute;
-            background-color: #fff;
-            color: #000;
-            border: 1px solid #ccc;
-            padding: 5px;
-            font-size: 12px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-            border-radius: 4px;
-            top: 30px;
-            left: 10px;
-            z-index: 10;
-        }
-        .tooltip-container {
-            position: relative;
-            display: inline-block;
-        }
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .error { color: red; }
     </style>
-</head>
-<body>
-    <fieldset>
-        <legend>Email</legend>
-        <form action="gender.html" onsubmit="return emailValidation()">
-            <table>
-                <tr>
-                    <td>Email</td>
-                    <td>
-                        <input type="text" id="email" required>
-                        <div class="tooltip-container">
-                            <input type="button" value="i" id="suggestion" onclick="toggleTooltip()">
-                            <span class="tooltip" id="tooltip-text">Hint: sample@example.com</span>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Submit"></td>
-                </tr>
-            </table>
-        </form>
-    </fieldset>
-
     <script>
-        // Toggle the tooltip visibility
-        function toggleTooltip() {
-            var tooltip = document.getElementById('tooltip-text');
-            if (tooltip.style.display === 'none' || tooltip.style.display === '') {
-                tooltip.style.display = 'block';
-            } else {
-                tooltip.style.display = 'none';
-            }
-        }
+        function validateForm() {
+            let errors = [];
 
-        // Email validation function
-        function emailValidation() {
-            var email = document.getElementById('email').value;
-            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-            // Check if the email matches the pattern
-            if (!emailPattern.test(email)) {
-                alert("Please enter a valid email address.");
-                return false; // Prevent form submission
+            // Email Validation
+            const email = document.forms["emailForm"]["email"].value;
+            const emailRegex = /^[\w.-]+@[\w.-]+\.[A-Za-z]{2,}$/;
+            if (!email) {
+                errors.push("Email cannot be empty.");
+            } else if (!emailRegex.test(email)) {
+                errors.push("Invalid email format. Must be in the form: anything@example.com");
             }
 
-            return true; // Allow form submission
+            if (errors.length > 0) {
+                document.getElementById("errorMessages").innerHTML = errors.join("<br>");
+                return false;
+            }
+            alert("Form submitted successfully!");
+            return true;
         }
     </script>
+</head>
+<body>
+    <form name="emailForm" onsubmit="return validateForm()">
+
+
+        <label>Email</label><br>
+        <input type="text" name="email"><br><br>
+
+        <input type="submit" value="Submit">
+
+        <div id="errorMessages" class="error"></div>
+    </form>
 </body>
 </html>

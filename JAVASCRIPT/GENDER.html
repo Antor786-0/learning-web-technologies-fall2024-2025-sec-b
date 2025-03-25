@@ -1,43 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gender</title>
+    <title>Gender Selection Validation</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; padding: 10px;}
+        .error { color: red; }
+    </style>
     <script>
-        // JavaScript validation function for gender
-        function genderValidation() {
-            // Check if any radio button is selected
-            var male = document.getElementById('male');
-            var female = document.getElementById('female');
-            var other = document.getElementById('other');
+        function validateForm() {
+            let errors = [];
 
-            // If no radio button is selected, show an alert and prevent form submission
-            if (!male.checked && !female.checked && !other.checked) {
-                alert("Please select a gender.");
-                return false;
+            // Gender Selection Validation
+            if (!document.querySelector('input[name="gender"]:checked')) {
+                errors.push("Gender must be selected.");
             }
 
-            // If gender is selected, form will be submitted
+            if (errors.length > 0) {
+                document.getElementById("errorMessages").innerHTML = errors.join("<br>");
+                return false;
+            }
+            alert("Form submitted successfully!");
             return true;
         }
     </script>
 </head>
 <body>
     <fieldset>
-        <legend>Gender</legend>
-        <form action="dob.html" onsubmit="return genderValidation()">
-            <table>
-                <tr>
-                    <td><input type="radio" name="gender" id="male"> Male</td>
-                    <td><input type="radio" name="gender" id="female"> Female</td>
-                    <td><input type="radio" name="gender" id="other"> Other</td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Submit"></td>
-                </tr>
-            </table>
-        </form>
-    </fieldset>
+    <legend>Gender</legend>
+    <table style="height: 20%;"> 
+        
+    <form name="genderForm" onsubmit="return validateForm()">
+<tr>
+    <td>
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <input type="radio" name="gender" value="Other"> Other
+    </td>
+</tr>
+ </table>
+</fieldset><br>
+        <input type="submit" value="Submit">
+
+        <div id="errorMessages" class="error"></div>
+    </form>
+   
 </body>
 </html>
+

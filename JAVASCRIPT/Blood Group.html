@@ -1,53 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blood Group Selection</title>
+    <title>Blood Group Selection Validation</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .error { color: red; }
+    </style>
     <script>
-        function bloodGroupValidation() {
-            // Get the selected blood group value
-            var bloodGroup = document.getElementById('bloodGroup').value;
+        function validateForm() {
+            let errors = [];
 
-            // Check if no blood group is selected
+            // Blood Group Selection Validation
+            const bloodGroup = document.forms["bloodForm"]["bloodGroup"].value;
             if (bloodGroup === "") {
-                alert("Please select a blood group.");
-                return false; // Prevent form submission
+                errors.push("Blood Group must be selected.");
             }
 
-            // If blood group is selected, allow form submission
+            if (errors.length > 0) {
+                document.getElementById("errorMessages").innerHTML = errors.join("<br>");
+                return false;
+            }
+            alert("Form submitted successfully!");
             return true;
         }
     </script>
 </head>
 <body>
-    <fieldset>
-        <legend>Blood Group</legend>
-        <form action="profilePicture.html" onsubmit="return bloodGroupValidation()">
-            <table>
-                <tr>
-                    <td>Blood Group:</td>
-                    <td>
-                        <select name="bloodGroup" id="bloodGroup">
-                            <option value="">Choose Blood Group</option>
-                            <option value="A+">A+</option>
-                            <option value="A-">A-</option>
-                            <option value="B+">B+</option>
-                            <option value="B-">B-</option>
-                            <option value="O+">O+</option>
-                            <option value="O-">O-</option>
-                            <option value="AB+">AB+</option>
-                            <option value="AB-">AB-</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="submit" value="Submit">
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </fieldset>
+    <form name="bloodForm" onsubmit="return validateForm()">
+
+        <label for="bloodGroup"> Blood Group</label>
+        <select name="bloodGroup">
+            <option value="">--Select--</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+        </select><br><br><hr>
+
+        <input type="submit" value="Submit">
+
+        <div id="errorMessages" class="error"></div>
+    </form>
 </body>
 </html>

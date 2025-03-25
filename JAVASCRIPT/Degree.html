@@ -1,43 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Degree</title>
+    <title> Degree Selection Validation</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .error { color: red; }
+    </style>
     <script>
-        // JavaScript validation function for degree selection
-        function degreeValidation() {
-            var ssc = document.getElementById('ssc').checked;
-            var hsc = document.getElementById('hsc').checked;
-            var bsc = document.getElementById('bsc').checked;
+        function validateForm() {
+            let errors = [];
 
-            // Check if at least one checkbox is selected
-            if (!ssc && !hsc && !bsc) {
-                alert("Please select at least one degree.");
-                return false; // Prevent form submission
+            // Degree Selection Validation
+            if (!document.querySelector('input[name="degree"]:checked')) {
+                errors.push("At least one degree must be selected.");
             }
 
-            return true; // Allow form submission
+            if (errors.length > 0) {
+                document.getElementById("errorMessages").innerHTML = errors.join("<br>");
+                return false;
+            }
+            alert("Form submitted successfully!");
+            return true;
         }
     </script>
 </head>
 <body>
-    <fieldset>
-        <legend><h3>Degree</h3></legend>
-        <form action="bloodGroup.html" onsubmit="return degreeValidation()">
-            <table>
-                <tr>
-                    <td>
-                        <input type="checkbox" id="ssc"> SSC
-                        <input type="checkbox" id="hsc"> HSC
-                        <input type="checkbox" id="bsc"> BSC
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Submit"></td>
-                </tr>
-            </table>
-        </form>
-    </fieldset>
+    <form name="degreeForm" onsubmit="return validateForm()">
+       
+
+        <fieldset>
+            <legend>Select your Degree(s)</legend>
+            <input type="checkbox" name="degree" value="SSC"> SSC
+            <input type="checkbox" name="degree" value="HSC"> HSC
+            <input type="checkbox" name="degree" value="BSc"> BSc
+           
+        </fieldset><br>
+          <input type="submit" value="Submit">
+        <div id="errorMessages" class="error"></div>
+    </form>
 </body>
 </html>
